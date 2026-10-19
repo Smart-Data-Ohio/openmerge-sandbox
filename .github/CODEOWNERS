@@ -1,0 +1,9 @@
+# Stage A sandbox: policy files and owned/ only — deliberately no catch-all owner.
+/.openmerge.yml @Smart-Data-Ohio/owners
+/.openmerge.yaml @Smart-Data-Ohio/owners
+/openmerge.yml @Smart-Data-Ohio/owners
+/openmerge.yaml @Smart-Data-Ohio/owners
+/.github/CODEOWNERS @Smart-Data-Ohio/owners
+/CODEOWNERS @Smart-Data-Ohio/owners
+/docs/CODEOWNERS @Smart-Data-Ohio/owners
+/owned/ @Smart-Data-Ohio/owners
