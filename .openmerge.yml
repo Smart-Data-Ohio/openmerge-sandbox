@@ -7,3 +7,7 @@ queues:
       - check-success = Frontend
       - check-success = Rust port
     merge_method: squash
+    checks:
+      retry_failed: 1
+    batch:
+      max_size: 2
