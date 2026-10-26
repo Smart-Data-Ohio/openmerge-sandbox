@@ -1,13 +1,24 @@
-name: ci
+name: CI
 on:
   pull_request:
+    branches: [main]
   push:
-    branches: ['openmerge/queue/**']
-permissions:
-  contents: read
+    branches: [main, "openmerge/queue/**"]
 jobs:
-  ci:
+  frontend:
+    name: Frontend
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: echo "sandbox CI ok"
+      - run: sleep 20 && echo frontend ok
+  rust:
+    name: Rust port
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fail once if flaky-once is present
+        run: |
+          if [ -f flaky-once ] && [ "${{ github.run_attempt }}" = "1" ]; then
+            echo "simulated flaky failure on attempt 1"; exit 1
+          fi
+          sleep 30 && echo rust ok

@@ -1,18 +1,9 @@
 version: 1
-classification:
-  docs: ['docs/**']
 queues:
-  - name: sandbox
-    base: main
-    merge_when: [check-success = ci]
-    approvals:
-      default: {human: true, count: 1}
-      rules:
-        - when: {labels: [docs]}
-          require: none
-        - when: {paths: ['receipt/**']}
-          require: {human: true, count: 1, receipt: true}
-        - when: {paths: ['owned/**', 'uncovered/**']}
-          require: {human: true, count: 1}
-        - when: {touches: ['owned/**', 'uncovered/**']}
-          require: {code_owners: true}
+  - name: default
+    enter_when:
+      - "-draft"
+    merge_when:
+      - check-success = Frontend
+      - check-success = Rust port
+    merge_method: squash
